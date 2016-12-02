@@ -1,12 +1,12 @@
 var x = [],
   y = [],
   angle = [],
-  segNum = 20,
-  segLength = 10, 
+  segNum = 10,
+  segLength = 5, 
   //speed
   ballX = 50,
   ballY = 50,
-  ballXDirection = 2,
+  ballXDirection = 3,
   ballYDirection = 3;
 
 for (var i = 0; i < segNum; i++) {
@@ -38,7 +38,7 @@ function draw() {
     ballYDirection *= -1;
   }
   ellipse(ballX, ballY, 10, 10);
-
+  collision();
 }
 
 function dragSegment(i, xin, yin) {
@@ -64,5 +64,9 @@ function segment(x, y, a) {
 //th mouse y <= ball lcoationY + half the size of the ball, ie. 5
 //if true console hit
 function collision() {
-  
+  if((mouseX <= ballX + 5 && mouseX > ballX - 5) && (mouseY <= ballY + 5 && mouseY > ballY - 5)) {
+    console.log("good job"); 
+    console.log("seg length is", segLength)
+    segLength = segLength + 0.5;
+  }
 }
